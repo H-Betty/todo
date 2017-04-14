@@ -67,13 +67,9 @@ export default class Todo extends Component{
      * @param {*todo} temp 
      */
     handleCreate(temp){         
-        //console.log(temp.memo);
-        //console.log(temp.state);
-
         this.setState({                        
             todo: this.state.todo.concat(temp)
         })
-        
     }
 
     
