@@ -24,6 +24,7 @@ export default class TodoCreate extends Component{
             memo:this.state.memo, 
             state:this.state.state
         };
+        
         this.props.onCreate(todo);
         
         this.setState({
@@ -47,6 +48,7 @@ export default class TodoCreate extends Component{
 TodoCreate.PropTypes={
     onCreate: React.PropTypes.func
 };
+
 TodoCreate.defaultProps={
-    onCreate:()=>{ console.error("no setting"); }
+    onCreate:()=>{ console.error("onCreate not defined"); }
 }
