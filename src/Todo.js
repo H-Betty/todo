@@ -112,6 +112,7 @@ export default class Todo extends Component{
                 </p>          
                 <div>{mapToComponent(this.state.todo)}</div>
 
+                
                 <TodoCreate 
                     onCreate={this.handleCreate}                   
                 /> 

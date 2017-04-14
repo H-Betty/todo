@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types'
 
 export default class TodoCreate extends Component{    
     constructor(props){
@@ -46,7 +47,7 @@ export default class TodoCreate extends Component{
 
 
 TodoCreate.PropTypes={
-    onCreate: React.PropTypes.func
+    onCreate: PropTypes.func
 };
 
 TodoCreate.defaultProps={
