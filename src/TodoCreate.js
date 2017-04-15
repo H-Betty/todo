@@ -12,13 +12,13 @@ export default class TodoCreate extends Component{
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
-
         this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleChange(e){
         let nextState={};
         nextState[e.target.name] = e.target.value;
+        
         this.setState(nextState)
     }
 
@@ -45,17 +45,15 @@ export default class TodoCreate extends Component{
     render(){        
         return(
             <div>
-                <div>
-                    <input 
-                        type="text" 
-                        name="memo" 
-                        placeholder="todo...."
-                        className="form-control" 
-                        value={this.state.memo} 
-                        onChange={this.handleChange} 
-                        onKeyPress={this.handleKeyPress}                       
-                    />
-                </div>                                
+                <input 
+                    type="text" 
+                    name="memo" 
+                    placeholder="내용을 입력하세요..."
+                    className="form-control" 
+                    value={this.state.memo} 
+                    onChange={this.handleChange} 
+                    onKeyPress={this.handleKeyPress}                       
+                />
             </div>
         );            
     }

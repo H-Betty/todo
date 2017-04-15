@@ -5,7 +5,7 @@ export default class TodoInfo extends Component{
     
     render(){  
         return(
-            <a href="#" className="list-group-item clearfix">
+            <a href="#" className="list-group-item clearfix" onClick={this.props.onChangeState}>
                 <span className="glyphicon glyphicon-file"></span>{this.props.todo.memo}
                 <span className="pull-right">
                     <button 

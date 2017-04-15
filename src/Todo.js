@@ -71,13 +71,13 @@ export default class Todo extends Component{
     }
 
     handleChangeState(key){
-
+        let s = this.state.todo[key].state === 1 ? 0 : 1;
         this.setState({
             todo: update(
                 this.state.todo, 
             {
-                [key]:{
-                    state: {$set: 1}
+                [key]:{ 
+                    state: {$set: s}
                 }
             })
         })        
@@ -141,20 +141,19 @@ export default class Todo extends Component{
         return (
             <div className="container">
                 <UI />
-                <p>
+                <div className="well">
                     <input 
                         name="search" 
-                        placeholder="search...." 
+                        className="form-control"
+                        placeholder="검색어...." 
                         value={this.state.search} 
                         onChange={this.handleChange} />
-                </p>          
 
-                <div>{mapToComponent(this.state.todo)}</div>
+                    <TodoCreate 
+                        onCreate={this.handleCreate} />
+                </div>
+                <div className="list-group">{mapToComponent(this.state.todo)}</div>
               
-                <TodoCreate 
-                    onCreate={this.handleCreate}                   
-                />               
-
             </div>
         );
     }
