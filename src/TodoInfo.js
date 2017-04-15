@@ -9,7 +9,7 @@ export default class TodoInfo extends Component{
         }
              
         return(
-            <a href="#" className="list-group-item clearfix">
+            <a href="#" className="list-group-item clearfix left">
                 <span className="glyphicon glyphicon-file"></span>
                 <span onClick={this.props.onChangeState}>{this.props.todo.memo}</span>
                 <span className="pull-right">
