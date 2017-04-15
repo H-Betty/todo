@@ -12,6 +12,8 @@ export default class TodoCreate extends Component{
 
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+
+        this.handleKeyPress = this.handleKeyPress.bind(this);
     }
 
     handleChange(e){
@@ -34,23 +36,26 @@ export default class TodoCreate extends Component{
         });
     }
 
+    handleKeyPress(e){
+        if (e.charCode === 13) {
+            this.handleClick();
+        }
+    }
+
     render(){        
         return(
-            <div className="row">
-                <div className="form-group col-5">
+            <div>
+                <div>
                     <input 
                         type="text" 
                         name="memo" 
                         placeholder="todo...."
                         className="form-control" 
                         value={this.state.memo} 
-                        onChange={this.handleChange}                        
+                        onChange={this.handleChange} 
+                        onKeyPress={this.handleKeyPress}                       
                     />
-                </div>
-                <button
-                    type="button"
-                    className="btn-sm btn btn-primary" 
-                    onClick={this.handleClick}>추가</button>                
+                </div>                                
             </div>
         );            
     }
@@ -64,4 +69,3 @@ TodoCreate.PropTypes={
 TodoCreate.defaultProps={
     onCreate:()=>{ console.error("onCreate not defined"); }
 }
-    

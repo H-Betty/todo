@@ -5,17 +5,19 @@ export default class TodoInfo extends Component{
     
     render(){  
         return(
-            <li className={this.props.todo.state === 0 ? "col-7 list-group-item": "col-7 list-group-item disabled"}>
-                <span onClick={this.props.onClick}>{this.props.todo.memo}</span>
-                <button 
-                    type="button" 
-                    className="btn-sm btn btn-outline-success"
-                    onClick={this.props.onChangeState}>END</button>
-                <button 
-                    type="button" 
-                    className="btn-sm btn btn-danger"
-                    onClick={this.props.onRemove}>DEL</button>
-            </li>
+            <a href="#" className="list-group-item clearfix">
+                <span className="glyphicon glyphicon-file"></span>{this.props.todo.memo}
+                <span className="pull-right">
+                    <button 
+                        className={this.props.todo.state === 0 ? "btn btn-xs btn-info": "btn btn-xs btn-default"}
+                        onClick={this.props.onChangeState}>END</button>
+                    <button 
+                        className={this.props.todo.state === 0 ? "btn btn-xs btn-default": "btn btn-xs btn-warning"}
+                        onClick={this.props.onRemove}>
+                        <span className="glyphicon glyphicon-trash"></span>
+                    </button>           
+                </span>
+            </a>
         );            
     }
 }

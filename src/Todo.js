@@ -140,7 +140,7 @@ export default class Todo extends Component{
 
         return (
             <div className="container">
-                <UI/>
+                <UI />
                 <p>
                     <input 
                         name="search" 
@@ -149,9 +149,7 @@ export default class Todo extends Component{
                         onChange={this.handleChange} />
                 </p>          
 
-                <div className="todo-list">
-                    <ul className="list-group">{mapToComponent(this.state.todo)}</ul>
-                </div>
+                <div>{mapToComponent(this.state.todo)}</div>
               
                 <TodoCreate 
                     onCreate={this.handleCreate}                   
