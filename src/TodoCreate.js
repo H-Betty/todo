@@ -18,8 +18,11 @@ export default class TodoCreate extends Component{
     handleChange(e){
         let nextState={};
         nextState[e.target.name] = e.target.value;
+        this.setState(nextState);       
         
-        this.setState(nextState)
+        if(e.target.name === "memo"){
+            this.props.onSearch(e.target.value);
+        }
     }
 
     handleClick(){
@@ -61,9 +64,11 @@ export default class TodoCreate extends Component{
 
 
 TodoCreate.PropTypes={
-    onCreate: PropTypes.func
+    onCreate: PropTypes.func,
+    onSearch: PropTypes.func
 };
 
 TodoCreate.defaultProps={
-    onCreate:()=>{ console.error("onCreate not defined"); }
+    onCreate:()=>{ console.error("onCreate not defined"); },
+    onSearch:()=>{ console.error("onSearch not defined"); }
 }

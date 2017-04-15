@@ -27,6 +27,7 @@ export default class Todo extends Component{
         this.handleChangeState= this.handleChangeState.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     /**
@@ -62,6 +63,12 @@ export default class Todo extends Component{
         })
     }
 
+    handleSearch(text){
+        this.setState({
+            search: text
+        })
+    }
+
     /**
      * 선택 key
      * @param {*select} key 
@@ -89,7 +96,8 @@ export default class Todo extends Component{
      */
     handleCreate(temp){         
         this.setState({                        
-            todo: this.state.todo.concat(temp)
+            todo: this.state.todo.concat(temp), 
+            search: ''
         })
     }
 
@@ -149,8 +157,9 @@ export default class Todo extends Component{
                         value={this.state.search} 
                         onChange={this.handleChange} />
 
-                    <TodoCreate 
-                        onCreate={this.handleCreate} />
+                    <TodoCreate
+                        onSearch={this.handleSearch} 
+                        onCreate={this.handleCreate} />                
                 </div>
                 <div className="list-group">{mapToComponent(this.state.todo)}</div>
               
