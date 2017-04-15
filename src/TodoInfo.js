@@ -10,7 +10,7 @@ export default class TodoInfo extends Component{
                 <button 
                     type="button" 
                     className="btn-sm btn btn-outline-success"
-                    onClick={this.props.onChangeState}>Check</button>
+                    onClick={this.props.onChangeState}>END</button>
                 <button 
                     type="button" 
                     className="btn-sm btn btn-danger"

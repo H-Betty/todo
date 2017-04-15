@@ -37,8 +37,21 @@ export default class TodoCreate extends Component{
     render(){        
         return(
             <div>
-                <input type="text" name="memo" placeholder="todo...." value={this.state.memo} onChange={this.handleChange}/>                                
-                <button onClick={this.handleClick}>create</button>
+                <div className="form-inline">
+                    <div className="form-group mx-sm-3">
+                        <input 
+                            type="text" 
+                            name="memo" 
+                            placeholder="todo...."
+                            className="form-control" 
+                            value={this.state.memo} 
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button
+                        className="btn btn-primary" 
+                        onClick={this.handleClick}>추가</button>
+                </div>
             </div>
 
         );            

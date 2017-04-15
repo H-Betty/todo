@@ -53,9 +53,7 @@ export default class Todo extends Component{
      * @param {*select} key 
      */
     handleClick(key){
-        this.setState({
-            selectKey :key            
-        })             
+        alert(key);
     }
 
     handleChangeState(key){
