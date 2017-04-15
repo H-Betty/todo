@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//import PropTypes from 'prop-types' 
 
 export default class Plus extends Component{
     
@@ -27,3 +28,4 @@ export default class Plus extends Component{
         );
     }
 }
+

@@ -29,6 +29,29 @@ export default class Todo extends Component{
     }
 
     /**
+     * 컴포넌트 마운드 되기전 
+     */
+    componentWillMount(){
+        const todo = localStorage.reactTodo;
+        if(todo){
+            this.setState({
+                todo: JSON.parse(todo)
+            })
+        }        
+    }
+
+    /**
+     * 컴포넌트 state변경시 마다 호출
+     * @param {*} provProps 
+     * @param {*} prevState 
+     */
+    componentDidUpdate(provProps, prevState){
+        if(JSON.stringify(prevState.todo) !== JSON.stringify(this.state.todo)){
+            localStorage.reactTodo = JSON.stringify(this.state.todo);
+        }
+    }
+
+    /**
      * 선택 select key 변경
      * @param {*target} e 
      */
