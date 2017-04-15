@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
+
+import update from 'react-addons-update'
 import TodoInfo from './TodoInfo';
 import TodoCreate from './TodoCreate';
-import './Todo.css';
-import update from 'react-addons-update'
-import UI from './UI';
 
 export default class Todo extends Component{    
 
@@ -148,11 +147,10 @@ export default class Todo extends Component{
 
         return (
             <div className="container">
-                <UI />
                 <div className="well">
                     <input 
                         name="search" 
-                        className="form-control"
+                        className="form-control blind"
                         placeholder="검색어...." 
                         value={this.state.search} 
                         onChange={this.handleChange} />
