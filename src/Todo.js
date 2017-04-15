@@ -3,6 +3,7 @@ import TodoInfo from './TodoInfo';
 import TodoCreate from './TodoCreate';
 import './Todo.css';
 import update from 'react-addons-update'
+import UI from './UI';
 
 export default class Todo extends Component{    
 
@@ -138,7 +139,8 @@ export default class Todo extends Component{
         }
 
         return (
-            <div className="container">                
+            <div className="container">
+                <UI/>
                 <p>
                     <input 
                         name="search" 
