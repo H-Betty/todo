@@ -5,7 +5,7 @@ export default class TodoInfo extends Component{
     
     render(){  
         return(
-            <li className={this.props.todo.state === 0 ? "list-group-item": "list-group-item disabled"}>
+            <li className={this.props.todo.state === 0 ? "col-7 list-group-item": "col-7 list-group-item disabled"}>
                 <span onClick={this.props.onClick}>{this.props.todo.memo}</span>
                 <button 
                     type="button" 

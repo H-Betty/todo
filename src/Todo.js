@@ -8,8 +8,8 @@ export default class Todo extends Component{
 
     constructor(props){
         super(props);
+
         this.state ={
-            value:0, 
             search: '',
             selectKey:-1,
             todo:[
@@ -20,22 +20,12 @@ export default class Todo extends Component{
             ]                
         };
 
-        this.handleClickPlus = this.handleClickPlus.bind(this);        
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         
         this.handleChangeState= this.handleChangeState.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
-    }
-
-    /**
-     * 값 +1
-     */
-    handleClickPlus(){
-        this.setState({
-            value : this.state.value +1
-        })
     }
 
     /**
@@ -103,8 +93,7 @@ export default class Todo extends Component{
     render(){
 
         const mapToComponent = (data) =>{
-            //console.log(data);
-
+           
             data.sort();
             data = data.filter(
                 (todo) =>{
@@ -126,19 +115,23 @@ export default class Todo extends Component{
         }
 
         return (
-            <div className="container">
-                <h1>{this.state.value}</h1>                
+            <div className="container">                
                 <p>
-                    <input name="search" placeholder="입력...." value={this.state.search} onChange={this.handleChange} />
-                    <button onClick={this.handleClickPlus}>{this.props.msg}</button>
+                    <input 
+                        name="search" 
+                        placeholder="search...." 
+                        value={this.state.search} 
+                        onChange={this.handleChange} />
                 </p>          
+
                 <div className="todo-list">
                     <ul className="list-group">{mapToComponent(this.state.todo)}</ul>
                 </div>
               
                 <TodoCreate 
                     onCreate={this.handleCreate}                   
-                /> 
+                />               
+
             </div>
         );
     }
