@@ -76,7 +76,13 @@ export default class Todo extends Component{
         alert(key);
     }
 
-    handleChangeState(key){
+    handleChangeState(item){
+        let key = this.state.todo.findIndex(
+                (todo) =>{
+                    return todo.memo === item.memo 
+                }
+            )
+
         let s = this.state.todo[key].state === 1 ? 0 : 1;
         this.setState({
             todo: update(
@@ -104,7 +110,13 @@ export default class Todo extends Component{
     /**
      * todo 삭제 
      */    
-    handleRemove(key){
+    handleRemove(item){
+        let key = this.state.todo.findIndex(
+                (todo) =>{
+                    return todo.memo === item.memo 
+                }
+            )
+
         if(this.state.todo[key].state === 1){
 
             this.setState({
@@ -117,7 +129,7 @@ export default class Todo extends Component{
             });
         }
         else{
-            alert("안했다.");
+            alert(item.memo + "END 후 삭제");
         }
     }
 
@@ -137,9 +149,8 @@ export default class Todo extends Component{
                     <TodoInfo 
                         todo={todo} 
                         key={i}  
-                        onClick={() => this.handleClick(i)}
-                        onRemove={() => this.handleRemove(i)}
-                        onChangeState={() => this.handleChangeState(i)}
+                        onRemove={() => this.handleRemove(todo)}
+                        onChangeState={() => this.handleChangeState(todo)}
                     />
                 );
             })

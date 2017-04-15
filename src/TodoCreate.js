@@ -19,10 +19,11 @@ export default class TodoCreate extends Component{
         let nextState={};
         nextState[e.target.name] = e.target.value;
         this.setState(nextState);       
-        
+
         if(e.target.name === "memo"){
             this.props.onSearch(e.target.value);
         }
+        
     }
 
     handleClick(){
