@@ -24,7 +24,7 @@ export default class Todo extends Component{
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         
-        this.handleChecked= this.handleChecked.bind(this);
+        this.handleChangeState= this.handleChangeState.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
     }
@@ -58,9 +58,16 @@ export default class Todo extends Component{
         })             
     }
 
-    handleChecked(key){
+    handleChangeState(key){
+
         this.setState({
-            selectKey :key            
+            todo: update(
+                this.state.todo, 
+            {
+                [key]:{
+                    state: {$set: 1}
+                }
+            })
         })        
     }
 
@@ -76,26 +83,23 @@ export default class Todo extends Component{
 
     
     /**
-     * select key로 삭제시 사용함
+     * todo 삭제 
      */    
     handleRemove(key){
+        if(this.state.todo[key].state === 1){
 
-        console.log()
-        /*
-        if(this.state.selectKey < 0){
-            console.log("not selected");
-            return;
+            this.setState({
+                todo:update(
+                    this.state.todo, 
+                    {
+                        $splice:[[key, 1]] 
+                    }
+                )
+            });
         }
-        */
-
-        this.setState({
-            todo:update(
-                this.state.todo, 
-                {
-                   $splice:[[key, 1]] 
-                }
-            )
-        })
+        else{
+            alert("안했다.");
+        }
     }
 
     render(){
@@ -117,6 +121,7 @@ export default class Todo extends Component{
                         key={i}  
                         onClick={() => this.handleClick(i)}
                         onRemove={() => this.handleRemove(i)}
+                        onChangeState={() => this.handleChangeState(i)}
                     />
                 );
             })
