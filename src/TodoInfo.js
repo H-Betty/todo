@@ -3,16 +3,21 @@ import PropTypes from 'prop-types'
 
 export default class TodoInfo extends Component{    
     
-    render(){  
+    render(){ 
+        const isComplete = (data) => {
+            return data === 0;
+        }
+             
         return(
-            <a href="#" className="list-group-item clearfix" onClick={this.props.onChangeState}>
-                <span className="glyphicon glyphicon-file"></span>{this.props.todo.memo}
+            <a href="#" className="list-group-item clearfix">
+                <span className="glyphicon glyphicon-file"></span>
+                <span onClick={this.props.onChangeState}>{this.props.todo.memo}</span>
                 <span className="pull-right">
                     <button 
-                        className={this.props.todo.state === 0 ? "btn btn-xs btn-info": "btn btn-xs btn-default"}
+                        className={isComplete(this.props.todo.state) ? "btn btn-xs btn-info": "btn btn-xs btn-default"}
                         onClick={this.props.onChangeState}>END</button>
                     <button 
-                        className={this.props.todo.state === 0 ? "btn btn-xs btn-default": "btn btn-xs btn-warning"}
+                        className={isComplete(this.props.todo.state) ? "btn btn-xs btn-default": "btn btn-xs btn-warning"}
                         onClick={this.props.onRemove}>
                         <span className="glyphicon glyphicon-trash"></span>
                     </button>           
