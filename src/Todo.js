@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import TodoInfo from './TodoInfo';
 import TodoCreate from './TodoCreate';
+import './Todo.css';
+import update from 'react-addons-update'
 
 export default class Todo extends Component{    
 
@@ -51,7 +53,7 @@ export default class Todo extends Component{
      * @param {*select} key 
      */
     handleClick(key){
-         this.setState({
+        this.setState({
             selectKey :key            
         })             
     }
@@ -76,43 +78,61 @@ export default class Todo extends Component{
     /**
      * select key로 삭제시 사용함
      */    
-    handleRemove(){
-        console.log("remove");
+    handleRemove(key){
 
+        console.log()
         /*
+        if(this.state.selectKey < 0){
+            console.log("not selected");
+            return;
+        }
+        */
+
         this.setState({
-            todo:this.todo.spliace(this.state.selectKey, 1)
-        })*/
+            todo:update(
+                this.state.todo, 
+                {
+                   $splice:[[key, 1]] 
+                }
+            )
+        })
     }
 
     render(){
 
         const mapToComponent = (data) =>{
-            console.log(data);
+            //console.log(data);
 
             data.sort();
             data = data.filter(
                 (todo) =>{
-                    return todo.memo.indexOf(this.state.search) > -1
+                    return todo.memo.indexOf(this.state.search) > -1 
                 }
             )
+
             return data.map((todo, i) =>{
                 return (
-                    <TodoInfo todo={todo} key={i} onClick={() => this.handleClick(i)}/>
+                    <TodoInfo 
+                        todo={todo} 
+                        key={i}  
+                        onClick={() => this.handleClick(i)}
+                        onRemove={() => this.handleRemove(i)}
+                    />
                 );
             })
         }
 
         return (
-            <div>      
+            <div className="container">
                 <h1>{this.state.value}</h1>                
                 <p>
                     <input name="search" placeholder="입력...." value={this.state.search} onChange={this.handleChange} />
                     <button onClick={this.handleClickPlus}>{this.props.msg}</button>
                 </p>          
-                <div>{mapToComponent(this.state.todo)}</div>
-
-                
+                <div className="todo-list">
+                    <ul className="list-group">{mapToComponent(this.state.todo)}</ul>
+                </div>
+              
                 <TodoCreate 
                     onCreate={this.handleCreate}                   
                 /> 
